@@ -117,10 +117,37 @@ function evalution(numOfChildren, str){
   return output;
 }
 
+function pickTop(arr){
+  var top = 0;
+  var holder = 0;
+  for(var i=0;i<arr.length;i++){
+     if(arr[i]>top){
+       top = arr[i];
+       holder = i;
+     }
+  }
+  return [top,holder];
+}
+
+function topArr(arr){
+  
+}
 //var arr = [ 0, 1, 4, 5, 2, 6, 3 ]; //shuffle(randArr(10));
 //var s = "WbllthavottehaoyexvowbinfrtvzbwgqtayeoaCpheonovsvjgan";
-console.log(evalution(10, s_stripWhite));
 
-//console.log(s_stripWhite);
-//console.log(rearrange(s_stripWhite, arr));
+var child = function(num){
+  var c = new Array();
+  for(var i=0;i<num;i++){ 
+    c.push(evalution(10, s_stripWhite));
+  }
+  return c;
+};
+var children = child(2);
+var fit = [];
+children.forEach(function(arr){
+  for(var i=0;i<arr.length;i++){
+    fit.push(arr[i].fitness);
+  }
+});
 
+console.log(pickTop(fit));
